@@ -296,10 +296,10 @@ MonoBehaviour:
     vectorActionSize: 02000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 8522869f54c024536bf3edb6211e53e5, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: My Behavior
+  m_BehaviorName: Mummy
   TeamId: 0
   m_UseChildSensors: 1
 --- !u!114 &7110838337433474026

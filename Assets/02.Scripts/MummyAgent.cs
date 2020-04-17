@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using MLAgents;
 
 public class MummyAgent : Agent
@@ -35,11 +36,12 @@ public class MummyAgent : Agent
                                             , 0.5f
                                             , Random.Range(-4.0f, 4.0f));
 
-        Invoke("RevertMaterial", 0.2f);
+        StartCoroutine(RevertMaterial());
     }
 
-    void RevertMaterial()
+    IEnumerator RevertMaterial()
     {
+        yield return new WaitForSeconds(0.5f);
         plane.material = originMt;
     }
 
@@ -99,6 +101,6 @@ public class MummyAgent : Agent
             EndEpisode();
         }
     }
-
+   
 
 }
