@@ -22,7 +22,7 @@ public class BouncerAgent : Agent
         m_Rb = gameObject.GetComponent<Rigidbody>();
         m_LookDir = Vector3.zero;
 
-        m_ResetParams = Academy.Instance.FloatProperties;
+        m_ResetParams = SideChannelUtils.GetSideChannel<FloatPropertiesChannel>();
 
         SetResetParameters();
     }
@@ -102,14 +102,11 @@ public class BouncerAgent : Agent
         }
     }
 
-    public override float[] Heuristic()
+    public override void Heuristic(float[] actionsOut)
     {
-        var action = new float[3];
-
-        action[0] = Input.GetAxis("Horizontal");
-        action[1] = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
-        action[2] = Input.GetAxis("Vertical");
-        return action;
+        actionsOut[0] = Input.GetAxis("Horizontal");
+        actionsOut[1] = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
+        actionsOut[2] = Input.GetAxis("Vertical");
     }
 
     void Update()

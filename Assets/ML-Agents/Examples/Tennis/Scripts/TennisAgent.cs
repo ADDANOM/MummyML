@@ -32,7 +32,7 @@ public class TennisAgent : Agent
         m_BallRb = ball.GetComponent<Rigidbody>();
         var canvas = GameObject.Find(k_CanvasName);
         GameObject scoreBoard;
-        m_ResetParams = Academy.Instance.FloatProperties;
+        m_ResetParams = SideChannelUtils.GetSideChannel<FloatPropertiesChannel>();
         if (invertX)
         {
             scoreBoard = canvas.transform.Find(k_ScoreBoardBName).gameObject;
@@ -86,13 +86,11 @@ public class TennisAgent : Agent
         m_TextComponent.text = score.ToString();
     }
 
-    public override float[] Heuristic()
+    public override void Heuristic(float[] actionsOut)
     {
-        var action = new float[2];
-
-        action[0] = Input.GetAxis("Horizontal");
-        action[1] = Input.GetKey(KeyCode.Space) ? 1f : 0f;
-        return action;
+        actionsOut[0] = Input.GetAxis("Horizontal");    // Racket Movement
+        actionsOut[1] = Input.GetKey(KeyCode.Space) ? 1f : 0f;   // Racket Jumping
+        actionsOut[2] = Input.GetAxis("Vertical");   // Racket Rotation
     }
 
     public override void OnEpisodeBegin()

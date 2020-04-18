@@ -3,6 +3,7 @@
 using System.Collections;
 using UnityEngine;
 using MLAgents;
+using MLAgents.SideChannels;
 
 public class PushAgentBasic : Agent
 {
@@ -169,25 +170,25 @@ public class PushAgentBasic : Agent
         AddReward(-1f / maxStep);
     }
 
-    public override float[] Heuristic()
+    public override void Heuristic(float[] actionsOut)
     {
+        actionsOut[0] = 0;
         if (Input.GetKey(KeyCode.D))
         {
-            return new float[] { 3 };
+            actionsOut[0] = 3;
         }
-        if (Input.GetKey(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W))
         {
-            return new float[] { 1 };
+            actionsOut[0] = 1;
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
-            return new float[] { 4 };
+            actionsOut[0] = 4;
         }
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
         {
-            return new float[] { 2 };
+            actionsOut[0] = 2;
         }
-        return new float[] { 0 };
     }
 
     /// <summary>
@@ -225,7 +226,7 @@ public class PushAgentBasic : Agent
 
     public void SetGroundMaterialFriction()
     {
-        var resetParams = Academy.Instance.FloatProperties;
+        var resetParams = SideChannelUtils.GetSideChannel<FloatPropertiesChannel>();
 
         var groundCollider = ground.GetComponent<Collider>();
 
@@ -235,7 +236,7 @@ public class PushAgentBasic : Agent
 
     public void SetBlockProperties()
     {
-        var resetParams = Academy.Instance.FloatProperties;
+        var resetParams = SideChannelUtils.GetSideChannel<FloatPropertiesChannel>();
 
         var scale = resetParams.GetPropertyWithDefault("block_scale", 2);
         //Set the scale of the block

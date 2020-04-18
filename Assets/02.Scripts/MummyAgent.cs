@@ -71,20 +71,20 @@ public class MummyAgent : Agent
     }
 
 
-    // public override void Heuristic(float[] actionsOut)
-    // {
-    //     actionsOut[0] = Input.GetAxis("Horizontal");
-    //     actionsOut[1] = Input.GetAxis("Vertical");
-    // }
-
-    public override float[] Heuristic()
+    public override void Heuristic(float[] actionsOut)
     {
-        var action = new float[2];
-        action[0] = Input.GetAxis("Horizontal"); //Left, Right Key
-        action[1] = Input.GetAxis("Vertical");   //Up, Down Key
-
-        return action;
+        actionsOut[0] = Input.GetAxis("Horizontal");
+        actionsOut[1] = Input.GetAxis("Vertical");
     }
+
+    // public override float[] Heuristic()
+    // {
+    //     var action = new float[2];
+    //     action[0] = Input.GetAxis("Horizontal"); //Left, Right Key
+    //     action[1] = Input.GetAxis("Vertical");   //Up, Down Key
+
+    //     return action;
+    // }
 
     void OnCollisionEnter(Collision coll)
     {

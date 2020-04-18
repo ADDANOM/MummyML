@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: e6b789ca2bbf34bd2be0d8125d93847e
+guid: 75a830685bf8e43918adc4783a2abebf
 ScriptedImporter:
-  internalIDToNameTable: []
+  fileIDToRecycleName:
+    11400000: main obj
+    11400002: model data
   externalObjects: {}
-  serializedVersion: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
