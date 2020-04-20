@@ -42,13 +42,33 @@ public class MummyAgentDS : Agent
         sensor.AddObservation(norZ1);
         sensor.AddObservation(norX2);
         sensor.AddObservation(norZ2);
-
     }
 
     //에이전트 행동명령을 받는 메소드
     public override void OnActionReceived(float[] vectorAction)
     {
+        //에이전트의 이동 
+        float h = 0;
+        float v = 0;
 
+        switch((int)vectorAction[0])
+        {
+            case 0: v = 0f; break;
+            case 1: v = +1f; break;
+            case 2: v = -1f; break;
+        }
+
+        switch((int)vectorAction[1])
+        {
+            case 0: h = 0f; break;
+            case 1: h = -1f; break;
+            case 2: h = +1f; break;
+        }
+
+        Vector3 dir = (Vector3.forward * v) + (Vector3.right * h);
+        mummyTr.Translate(dir * 0.5f);
+
+        SetReward(-0.001f);
     }
 
     public override void Heuristic(float[] actionsOut)
