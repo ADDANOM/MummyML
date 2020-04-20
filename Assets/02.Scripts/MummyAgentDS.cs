@@ -35,6 +35,13 @@ public class MummyAgentDS : Agent
 
         //#2. 관측정보
         Vector3 dist2 = targetTr.localPosition - mummyTr.localPosition;
+        float norX2 = Mathf.Clamp(dist2.x, -1f, +1f);
+        float norZ2 = Mathf.Clamp(dist2.z, -1f, +1f);
+
+        sensor.AddObservation(norX1);
+        sensor.AddObservation(norZ1);
+        sensor.AddObservation(norX2);
+        sensor.AddObservation(norZ2);
 
     }
 
