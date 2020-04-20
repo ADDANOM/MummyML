@@ -21,7 +21,10 @@ public class MummyAgentDS : Agent
     //에피소드의 초기화 (훈련이 시작될때 마다 호출)
     public override void OnEpisodeBegin()
     {
-
+        mummyTr.localPosition = new Vector3(0.0f, 0.05f, 0.0f);
+        targetTr.localPosition = new Vector3(Random.Range(-4.0f, 4.0f)
+                                            ,0.5f
+                                            ,Random.Range(-4.0f, 4.0f));
     }
 
     //관측정보를 수집하고 브레인에 전달하는 역할
@@ -93,4 +96,19 @@ public class MummyAgentDS : Agent
             actionsOut[1] = 2f;
         }
     }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("TARGET"))
+        {
+            SetReward(+1.0f);
+            EndEpisode();
+        }
+        if (coll.collider.CompareTag("DEAD_ZONE"))
+        {
+            SetReward(-1.0f);
+            EndEpisode();
+        }
+    }
+
 }
