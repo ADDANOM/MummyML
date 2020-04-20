@@ -2,7 +2,7 @@
 using UnityEngine;
 using MLAgents;
 
-public class MummyAgent : Agent
+public class MummyAgent : Agent 
 {
     public Transform targetTr;
     private Transform tr;
