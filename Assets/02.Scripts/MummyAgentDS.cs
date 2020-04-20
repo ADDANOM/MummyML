@@ -20,4 +20,33 @@ public class MummyAgentDS : Agent
     {
 
     }
+
+    //에이전트 행동명령을 받는 메소드
+    public override void OnActionReceived(float[] vectorAction)
+    {
+
+    }
+
+    public override void Heuristic(float[] actionsOut)
+    {
+        actionsOut[0] = 0f; //W, S (전/후)
+        actionsOut[1] = 0f; //A, D (좌/우)
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            actionsOut[0] = 1f;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            actionsOut[0] = 2f;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            actionsOut[1] = 1f;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            actionsOut[1] = 2f;
+        }
+    }
 }
