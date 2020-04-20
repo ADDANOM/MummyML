@@ -8,7 +8,6 @@ public class MummyAgent : Agent
     private Transform tr;
     private Rigidbody mummyRb;
     
-
     public Material rightMt;
     public Material wrongMt;
     private Material originMt;
