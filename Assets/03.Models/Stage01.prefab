@@ -292,12 +292,12 @@ MonoBehaviour:
   m_BrainParameters:
     vectorObservationSize: 8
     numStackedVectorObservations: 1
-    vectorActionSize: 02000000
+    vectorActionSize: 0300000003000000
     vectorActionDescriptions: []
-    vectorActionSpaceType: 1
+    vectorActionSpaceType: 0
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 1
   m_BehaviorName: Mummy
   TeamId: 0
   m_UseChildSensors: 1
