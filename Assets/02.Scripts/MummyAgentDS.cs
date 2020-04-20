@@ -25,6 +25,13 @@ public class MummyAgentDS : Agent
         targetTr.localPosition = new Vector3(Random.Range(-4.0f, 4.0f)
                                             ,0.5f
                                             ,Random.Range(-4.0f, 4.0f));
+
+        Invoke("SetOriginColor", 0.5f);
+    }
+
+    void SetOriginColor()
+    {
+        planeRd.material.color = originColor;
     }
 
     //관측정보를 수집하고 브레인에 전달하는 역할
@@ -102,11 +109,13 @@ public class MummyAgentDS : Agent
         if (coll.collider.CompareTag("TARGET"))
         {
             SetReward(+1.0f);
+            planeRd.material.color = Color.green;
             EndEpisode();
         }
         if (coll.collider.CompareTag("DEAD_ZONE"))
         {
             SetReward(-1.0f);
+            planeRd.material.color = Color.red;
             EndEpisode();
         }
     }
