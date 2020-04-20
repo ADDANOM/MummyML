@@ -2,11 +2,12 @@
 using UnityEngine;
 using MLAgents;
 
-public class MummyAgent : Agent 
+public class MummyAgent : Agent
 {
     public Transform targetTr;
     private Transform tr;
     private Rigidbody mummyRb;
+    
 
     public Material rightMt;
     public Material wrongMt;
